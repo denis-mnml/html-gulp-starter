@@ -1,0 +1,49 @@
+.notifications
+	position: fixed
+	top: 15px
+	right: 15px
+	z-index: 99999
+
+.notification
+	position: relative
+	display: flex
+	justify-content: space-between
+	align-items: center
+	max-width: 320px
+	padding: 12px 18px
+	margin-bottom: 10px
+	font-size: 14px
+	border-radius: 4px
+	background: #fff
+	border-left: 5px solid transparent
+	box-shadow: 0 8px 32px rgba(0,0,0, .1)
+	opacity: 0
+	transform: translateY(-50px)
+
+		
+	@include _992
+		padding: 10px 15px
+		font-size: 16px
+	@include _576
+		max-width: 290px
+		font-size: 14px
+
+	&.show
+		opacity: 1
+		transform: translateY(0px)
+	&__content
+		margin-right: 20px
+	&__close
+		+size(18px)
+		color: $gray-600
+		+trs-1
+		cursor: pointer
+		&:hover
+			color: $gray-700
+			
+
+	&.success
+		border-left: 5px solid $success
+	&.error
+		border-left: 5px solid $danger
+

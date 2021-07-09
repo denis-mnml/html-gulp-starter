@@ -1,0 +1,92 @@
+@import 'grid'
+@import 'display'
+@import 'spacing'
+@import 'text'
+@import 'colors'
+@import 'borders'
+@import 'sizing'
+@import 'flex'
+
+.img-fluid
+	display: block
+	max-width: 100%
+	height: auto
+
+.img-cover
+	width: 100%
+	object-fit: cover
+
+.img-contain
+	width: 100%
+	object-fit: contain
+
+
+
+
+.circle
+	border-radius: 50%
+
+.overlay
+	position: relative
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		+size(100%)
+		background: rgba(0,0,0, .3)
+
+.relative
+	position: relative
+
+.absolute
+	position: absolute
+
+.gray
+	color: $gray-700
+
+.small
+	font-size: 14px !important
+
+
+
+
+
+.list-reset
+	list-style: none
+	padding: 0
+	margin: 0
+
+
+
+
+.no-scroll
+	overflow: hidden
+
+.full-width
+	width: 100% !important
+
+.full-height
+	height: 100% !important
+
+.full-screen
+	min-height: 100vh
+
+.landscape.mobile .full-screen
+	min-height: 560px
+
+
+.vertical-center
+	display: flex
+	align-items: center
+
+.horizontal-center
+	display: flex
+	justify-content: center
+
+.oy-hidden
+	overflow-y: hidden
+.ox-hidden
+	overflow-x: hidden
+.o-hidden
+	overflow: hidden

@@ -1,0 +1,26 @@
+// Font-weight helper:
+// 100 Extra Light or Ultra Light;
+// 200 Light or Thin; 300 Book or Demi;
+// 400 Regular or Normal;
+// 500 Medium;
+// 600 Semibold or Demibold;
+// 700 Bold;
+// 800 Black or Extra Bold or Heavy;
+// 900 Extra Black or Fat or Ultra Black
+
+
+@mixin font($f-name, $f-style, $f-weight, $f-url)
+	@font-face
+		font-family: $f-name
+		font-style: $f-style
+		font-weight: $f-weight
+		src: url($f-url) format('woff2')
+
+
+ //@include font('GothamPro', normal, 200, '/fonts/GothamPro-Light.woff2')
+ //@include font('GothamPro', normal, 400, '/fonts/GothamPro.woff2')
+ //@include font('GothamPro', normal, 500, '/fonts/GothamPro-Medium.woff2')
+ //@include font('GothamPro', normal, 700, '/fonts/GothamPro-Bold.woff2')
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap')
+

@@ -1,0 +1,52 @@
+// Возвращает имя последнего брейкпоинта. Null если последний брейкпоинт
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints))
+	$n: index($breakpoint-names, $name)
+	@return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null)
+
+
+// Возвращает ширину брейкпоинта. Null для минимального (xs) брейкпоинта
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints)
+	$min: map-get($breakpoints, $name)
+	@return if($min != 0, $min, null)
+
+
+// Возвращает ширину брейкпоинта. Null для максимального (xl) брейкпоинта
+// Максимальное значение брейкпоинта уменьшается на 0.02px для области просмотра с дробной шириной
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints)
+	$next: breakpoint-next($name, $breakpoints)
+	@return if($next, breakpoint-min($next, $breakpoints) - .02, null)
+
+
+// Возвращает пустую строку, если наименьший брейкпоинт, имя брейкпоинта с двоеточием в конце
+// Используется для создания отзывчивых утилит (sm:d-block)
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    return ""
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    return "sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints)
+	@return if(breakpoint-min($name, $breakpoints) == null, "", "#{$name}#{$media-separator}")
+
+
+
+// Возвращает медиа запрос с шириной брейкпоинта
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints)
+	$min: breakpoint-min($name, $breakpoints)
+	@if $min
+		@media (min-width: $min)
+			@content
+	@else
+		@content

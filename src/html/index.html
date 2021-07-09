@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+  @@include('./includes/head.html', { "title" : "Html Gulp Starter" })
+  <body>
+    @@include('./includes/header.html')
+
+    <div class="container py-10">
+      <img src="../assets/img/preview.jpg" alt="Html Gulp Starter" class="img-fluid rounded-lg mb-10">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo ut fugit itaque quae ipsam dignissimos repellat odit voluptas eius, ullam reiciendis. Sint voluptatum modi et eveniet quaerat qui asperiores eos.</p>
+      <button class="btn btn_accent mt-4 modal-open">Fancybox test</button>
+      <h2 class="mt-10">Svg sprite</h2>
+      <div class="d-flex">
+        @@loop('utils/svg.html', [ 
+          { "icon": "close" }, 
+          { "icon": "phone" }, 
+          { "icon": "menu" }, 
+        ])
+
+        @@include('utils/svg.html', {"icon": "map-marker"})
+      </div>
+    </div>
+
+    @@include('./includes/footer.html')
+  </body>
+</html>

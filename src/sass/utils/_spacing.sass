@@ -1,0 +1,51 @@
+// Margins auto
+.mx-auto
+	margin-right: auto !important
+	margin-left: auto !important
+.my-auto
+	margin-top: auto !important
+	margin-bottom: auto !important
+.mt-auto
+	margin-top: auto !important
+.mb-auto
+	margin-bottom: auto !important
+.ml-auto
+	margin-left: auto !important
+.mr-auto
+	margin-right: auto !important
+
+@each $key, $space in $spaces
+	.mt-#{$key}
+		margin-top: $space
+	.mb-#{$key}
+		margin-bottom: $space
+	.mr-#{$key}
+		margin-right: $space
+	.ml-#{$key}
+		margin-left: $space
+	.mx-#{$key}
+		margin-right: $space
+		margin-left: $space
+	.my-#{$key}
+		margin-top: $space
+		margin-bottom: $space
+	.m-#{$key}
+		margin: $space
+	.pt-#{$key}
+		padding-top: $space
+	.pb-#{$key}
+		padding-bottom: $space
+	.pr-#{$key}
+		padding-right: $space
+	.pl-#{$key}
+		padding-left: $space
+	.px-#{$key}
+		padding-right: $space
+		padding-left: $space
+	.py-#{$key}
+		padding-top: $space
+		padding-bottom: $space
+	.p-#{$key}
+		padding: $space
+
+

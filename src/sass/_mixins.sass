@@ -1,0 +1,111 @@
+@mixin min($size)
+	@media (min-width: #{$size}px)
+		@content
+
+@mixin max($size)
+	@media (max-width: #{$size}px)
+		@content
+
+@mixin max_min($max_size, $min_size)
+	@media (max-width: #{$max_size}px) and (min-width: #{$min_size}px)
+		@content
+
+@mixin _1440
+	@media (max-width: 1439px)
+		@content
+
+@mixin _1400
+	@media (max-width: 1399px)
+		@content
+
+@mixin _1280
+	@media (max-width: 1279px)
+		@content
+
+@mixin _1200
+	@media (max-width: 1199px)
+		@content
+
+@mixin _992
+	@media (max-width: 991px)
+		@content
+
+@mixin _768
+	@media (max-width: 767px)
+		@content
+
+@mixin _576
+	@media (max-width: 576px)
+		@content
+
+@mixin _480
+	@media (max-width: 479px)
+		@content
+
+@mixin _380
+	@media (max-width: 379px)
+		@content
+
+@mixin _320
+	@media (max-width: 320px)
+		@content
+
+@mixin center
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+@mixin v-center
+	transform: translateY(-50%)
+
+@mixin h-center
+	transform: translateX(-50%)
+
+@mixin scale($size)
+	transform: scale($size)
+
+
+@mixin auto-font-size($max-size, $min-size)
+	font-size: #{$max-size}px
+	@media (min-width: 320px) and (max-width: 1024px)
+		font-size: calc(#{$min-size}px + (#{$max-size} - #{$min-size}) * ((100vw - 320px) / (1024 - 320)))
+
+
+
+
+
+@mixin size($width, $height: $width)
+	width: $width
+	height: $height
+
+@mixin flex-basis($size)
+	flex: 0 0 $size
+	max-width: $size
+
+@mixin round
+	border-radius: 50%
+
+@mixin link-transition
+	transition: .1s ease
+
+@mixin btn-transition
+	transition: .15s ease
+
+@mixin trs($time, $easing: ease)
+	transition: #{$time}s $easing
+
+@mixin trs-1
+	transition: .1s ease
+
+@mixin trs-2
+	transition: .2s ease
+
+@mixin trs-3
+	transition: .3s ease
+
+@mixin no-scroll
+	-ms-overflow-style: none
+	scrollbar-width: none
+	&::-webkit-scrollbar
+		display: none

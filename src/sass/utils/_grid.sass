@@ -1,0 +1,79 @@
+.container, .container-fluid
+	width: 100%
+	padding-right: $grid-gutter-width / 2
+	padding-left: $grid-gutter-width / 2
+	margin-right: auto
+	margin-left: auto
+	@media (max-width: map-get($grid-breakpoints, sm))
+		padding-right: $sm-container-padding / 2
+		padding-left: $sm-container-padding / 2
+
+.row
+	display: flex
+	flex-wrap: wrap
+	margin-right: -$grid-gutter-width / 2
+	margin-left: -$grid-gutter-width / 2
+	//@media (max-width: map-get($grid-breakpoints, sm))
+	//	margin-right: -$sm-grid-gutter-width / 2
+	//	margin-left: -$sm-grid-gutter-width / 2
+
+
+@each $breakpoint, $size in $container-max-widths
+	@include media-breakpoint-up($breakpoint)
+		.container
+			max-width: $size
+
+
+@mixin make-col-offset($size, $columns: $grid-columns)
+	$num: $size / $columns
+	margin-left: if($num == 0, 0, percentage($num))
+
+// Bootstrap grid framework
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints)
+	// Common properties for all breakpoints
+	%grid-column
+		position: relative
+		width: 100%
+		padding-right: $gutter / 2
+		padding-left: $gutter / 2
+
+	@each $breakpoint in map-keys($breakpoints)
+		$infix: breakpoint-infix($breakpoint, $breakpoints)
+
+		@if $columns > 0
+			@for $i from 1 through $columns
+				.#{$infix}col-#{$i}
+					@extend %grid-column
+
+		.#{$infix}col,
+		.#{$infix}col-auto
+			@extend %grid-column
+
+		@include media-breakpoint-up($breakpoint, $breakpoints)
+			.#{$infix}col
+				flex-basis: 0
+				flex-grow: 1
+				max-width: 100%
+
+
+			@if $columns > 0
+				@for $i from 1 through $columns
+					.#{$infix}col-#{$i}
+						flex: 0 0 percentage($i / $columns)
+						max-width: percentage($i / $columns)
+
+
+			@if $columns > 0
+				@for $i from 0 through ($columns - 1)
+					@if not ($infix == "" and $i == 0)
+						.#{$infix}offset-#{$i}
+							@include make-col-offset($i, $columns)
+
+
+@include make-grid-columns()
+
+
+
+
+
+

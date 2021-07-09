@@ -1,0 +1,39 @@
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
+	font-weight: bold
+	line-height: 1.2
+
+
+
+.h1, h1
+	+auto-font-size(54, 28)
+
+.h2, h2
+	+auto-font-size(42, 26)
+
+.h3, h3
+	+auto-font-size(38, 24)
+
+.h4, h4
+	+auto-font-size(31, 22)
+
+.h5, h5
+	+auto-font-size(24, 19)
+
+.h6, h6 
+	font-size: 1em
+
+
+// $h1-max: 54
+// $h1-min: 28
+
+// @for $i from 1 through 5
+// 	$max: #{$h1-max - (($h1-max - $font-size)/5) * ($i - 1)}
+// 	$min: #{$h1-min - (($h1-min - $font-size)/5) * ($i - 1)}
+// 	$max-width: 1024
+// 	$min-width: 320
+
+// 	h#{$i}, .h#{$i}
+// 		font-size: #{$max}px
+// 		@media (min-width: #{$min-width}px) and (max-width: #{$max-width}px)
+// 			font-size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - #{$min-width}px) / (#{$max-width} - #{$min-width})))
+
